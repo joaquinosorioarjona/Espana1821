@@ -194,7 +194,13 @@
 	  });
 	  map.add(audiencias);
 	  
-
+	  const provincias1824 = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/2",
+		title: "Provincias de España, América y Filipinas en 1824",
+		visible: false,
+		popupTemplate: template2
+	  });
+	  map.add(provincias1824);
 	  
 	  const provincias1821 = new FeatureLayer({
 		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/7",

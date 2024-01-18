@@ -1,0 +1,611 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>La división provincial de España y América justo antes y después de la independencia</title>
+  <style>
+    html, 
+	body, 
+	#viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+	#titleDiv {
+      padding: 10px;
+      text-align: center;
+    }
+	#queryDiv {
+		background-color: dimgray;
+        color: white;
+        padding: 10px;
+		height: 50px
+        width: 200px;
+     }
+	 #infoDiv1 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv1 h1 {
+        font-size: 16px;
+        }
+     #infoDiv1 p {
+        font-style: italic;
+        }
+	 #infoDiv2 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv2 h1 {
+        font-size: 16px;
+        }
+     #infoDiv2 p {
+        font-style: italic;
+        }
+	 #infoDiv3 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv3 h1 {
+        font-size: 16px;
+        }
+     #infoDiv3 p {
+        font-style: italic;
+        }
+	 #infoDiv4 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv4 h1 {
+        font-size: 16px;
+        }
+     #infoDiv4 p {
+        font-style: italic;
+        }
+	 #infoDiv5 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv5 h1 {
+        font-size: 16px;
+        }
+     #infoDiv5 p {
+        font-style: italic;
+        }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.24/"></script>
+
+
+  <script>
+    require([
+	  "esri/config",
+	  "esri/Map",
+      "esri/views/MapView",
+	  "esri/layers/FeatureLayer",
+	  "esri/layers/GraphicsLayer",
+	  "esri/rest/query",
+	  "esri/rest/support/Query",
+      "esri/widgets/BasemapGallery",
+      "esri/widgets/ScaleBar",
+	  "esri/widgets/Compass",
+	  "esri/widgets/Search",
+	  "esri/widgets/Locate",
+	  "esri/widgets/Home",
+	  "esri/widgets/Print",
+      "esri/widgets/Legend",
+	  "esri/widgets/LayerList",
+	  "esri/widgets/Expand",
+	  "esri/widgets/Popup"
+    ], function(esriConfig, Map, MapView, FeatureLayer, GraphicsLayer, query, Query, BasemapGallery, ScaleBar, Compass, Search, Locate, Home, Print, Legend, LayerList, Expand, Popup) {
+	
+	  esriConfig.apiKey = "AAPK563647cc6d0d4359b524c8e78537e87fXNsVKRBVmxFq1CtsilGtSJsM5LmFLxB7SUqSwZOSS_eo175yS7MF3OcNqaLQm8Lt";
+
+	  const resultsLayer = new GraphicsLayer();
+
+      const map = new Map({
+        basemap: "gray"
+      });
+	 
+      const view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [20, 10],
+        zoom: 3
+      });
+	 	  
+	  const basemapGallery = new BasemapGallery({
+        view: view,
+        source: {
+          query: {
+            title: '"World Basemaps for Developers" AND owner:esri'
+          }
+        }
+      });
+	  
+	  const bgExpand = new Expand({
+          view,
+          content: basemapGallery,
+          expandIconClass: "esri-icon-basemap"
+        });
+        view.ui.add(bgExpand, "bottom-left");
+	  
+	  	const template0 = {
+        title: "<b>{Puerto}</b>"
+		};
+		
+		const template1 = {
+        title: "<b>{NAMEUNIT}</b>"
+		};
+		
+      const template2 = {
+        title: "<b>{NAMEUNIT}</b>"
+		};
+		
+	  const template3 = {
+        title: "<b>{Nombre}</b>"
+		};
+		
+	  const template4 = {
+        title: "<b>{Nombre}</b>"
+		};
+		
+	  const template5 = {
+        title: "<b>{Distrito}"
+		};
+		
+	  const universidades = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/4",
+		title: "Distritos universitarios",
+		visible: false,
+		popupTemplate: template5
+	  });
+	  map.add(universidades);
+	  
+	  const diocesis = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/5",
+		title: "Diocesis eclesiásticas",
+		visible: false,
+		popupTemplate: template4
+	  });
+	  map.add(diocesis);
+	  
+	  const audiencias = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/3",
+		title: "Reales Audiencias",
+		visible: false,
+		popupTemplate: template3
+	  });
+	  map.add(audiencias);
+	  
+	  const provincias1824 = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/2",
+		title: "Provincias de España, América y Filipinas en 1824",
+		visible: false,
+		popupTemplate: template2
+	  });
+	  map.add(provincias1824);
+	  
+	  const provincias1821 = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/7",
+		title: "Provincias de España, América y Filipinas en 1821",
+		popupTemplate: template1
+	  });
+	  map.add(provincias1821);
+	  
+	  const puertos = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/8",
+		title: "Puertos de libre comercio",
+		visible: false,
+		popupTemplate: template0
+	  });
+	 map.add(puertos);
+
+	  const compass = new Compass({
+        view: view
+      });
+      view.ui.add(compass, "bottom-left");
+	  
+	  const scalebar = new ScaleBar({
+        view: view,
+		unit: "metric"
+      });
+      view.ui.add(scalebar, "bottom-left");
+	  
+	  view.ui.add("titleDiv", "top-right");
+	  
+	  const searchWidget = new Search({
+		view: view
+	  });
+      view.ui.add(searchWidget, "top-right");
+
+	  const homeBtn = new Home({
+          view: view
+        });
+      view.ui.add(homeBtn, "top-right");
+	  
+	  const legend = new Legend ({
+        view: view
+      });
+      legendExpand = new Expand({
+		expandIconClass: "esri-icon-legend",
+		view: view,
+		content: legend
+	  });
+	  view.ui.add(legendExpand, "top-left");
+	  
+	  const layerList = new LayerList({
+		view: view
+      });
+	  layerListExpand = new Expand({
+		expandIconClass: "esri-icon-layer-list",
+		view: view,
+		content: layerList
+	  });
+	  view.ui.add(layerListExpand, "top-left");
+	  
+	  	  const locateBtn = new Locate({
+          view: view
+        });
+      view.ui.add(locateBtn, "top-right");
+	  
+      view.when(() => {
+        const print = new Print({
+          view: view,
+          printServiceUrl:
+            "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+        });
+	    printExpand = new Expand({
+			expandIconClass: "esri-icon-printer",
+			view: view,
+			content: print
+	    });
+        view.ui.add(printExpand, "top-right");
+        });
+		
+	 const panel5 = new Expand({
+		expandIconClass: "esri-icon-maximize",
+		view: view,
+		content: document.getElementById("infoDiv5")
+	  });
+	  view.ui.add(panel5, "bottom-right");
+	  
+	 const panel4 = new Expand({
+		expandIconClass: "esri-icon-maximize",
+		view: view,
+		content: document.getElementById("infoDiv4")
+	  });
+	  view.ui.add(panel4, "bottom-right");
+	  
+	 const panel3 = new Expand({
+		expandIconClass: "esri-icon-maximize",
+		view: view,
+		content: document.getElementById("infoDiv3")
+	  });
+	  view.ui.add(panel3, "bottom-right");
+	  
+	 const panel2 = new Expand({
+		expandIconClass: "esri-icon-maximize",
+		view: view,
+		content: document.getElementById("infoDiv2")
+	  });
+	  view.ui.add(panel2, "bottom-right");
+	  
+	 const panel1 = new Expand({
+		expandIconClass: "esri-icon-maximize",
+		view: view,
+		content: document.getElementById("infoDiv1")
+	  });
+	  view.ui.add(panel1, "bottom-right");  
+	});
+  </script>
+</head>
+<body>
+  <div id="viewDiv">
+  
+	<div id="infoDiv1">
+        <h1>Las provincias de España en 1821</h1>
+        <p class="lorem"><b>Actas de la comisión de la Constitución del 10 de abril de 1811:</b> El territorio español comprende en la Península con sus islas adyacentes, las provincias de Álava, Aragón, Asturias, Ávila, Burgos, Cataluña, Córdoba, Cuenca, Extremadura, Galicia, Granada, Guadalajara, Guipúzcoa, Jaén, León, Madrid, Mancha, Murcia, Navarra, Nuevas Poblaciones, Palencia, Salamanca, Segovia, Sevilla, Soria, Toledo, Toro, Valencia, Valladolid, Vizcaya, Zamora; en las islas Baleares, Mallorca, Menorca, Ibiza, y Formentera; en las islas Canarias, la Gran Canaria, Tenerife, Fuerteventura, Lanzarote, La Palma, La Gomera, El Hierro; y en la costa de África, la Plaza de Ceuta, y los tres presidios menores: Melilla, Peñón de Vélez y Alhucemas.
+		<p class="lorem"><b>Artículo 10 de la Constitución de 1812:</b> El territorio español comprende en la Península con sus posesiones e islas adyacentes, Aragón, Asturias, Castilla la Vieja, Castilla la Nueva, Cataluña, Córdoba, Extremadura, Galicia, Granada, Jaén, León, Molina, Murcia, Navarra, Provincias Vascongadas, Sevilla y Valencia, las islas Baleares y las Canarias con las demás posesiones de África.
+		<p class="lorem"><b>Artículo 11 de la Constitución de 1812:</b> Se hará una división más conveniente del territorio español por una ley constitucional, luego que las circunstancias políticas de la Nación lo permitan.
+		<p class="lorem"><b>Decreto CLXIV de las Cortes de 23 de mayo de 1812:</b> Habrá Diputaciones provinciales en la Península e Islas adyacentes, en:
+			<ol><li>Aragón.</li>
+			<li>Asturias.</li>
+			<li>Avila.</li>
+			<li>Burgos.</li>
+			<li>Cataluña.</li>
+			<li>Córdoba con las Nuevas Poblaciones.</li>
+			<li>Cuenca.</li>
+			<li>Extremadura.</li>
+			<li>Galicia.</li>
+			<li>Granada.</li>
+			<li>Guadalajara con Molina.</li>
+			<li>Jaen.</li>
+			<li>Leon.</li>
+			<li>Madrid.</li>
+			<li>Mancha.</li>
+			<li>Murcia.</li>
+			<li>Navarra.</li>
+			<li>Palencia.</li>
+			<li>Salamanca.</li>
+			<li>Segovia.</li>
+			<li>Sevilla con Ceuta.</li>
+			<li>Soria.</li>
+			<li>Toledo.</li>
+			<li>Valencia.</li>
+			<li>Valladolid.</li>
+			<li>Zamora.</li>
+			<li>En cada una de las Provincias Vascongadas: Alava.</li>
+			<li>Vizcaya.</li>
+			<li>Guipuzcoa.</li>
+			<li>En las Islas Baleares.</li>
+			<li>En las Islas Canarias.</li>
+			</ol>
+		<p class="lorem"><b>Decreto CCXIII de las Cortes de 19 de diciembre de 1812</b>: La provincia marítima de Cádiz, con los partidos que la componen y pueblos que constituyen a estos, se comprenderá en el número de las provincias que deben tener diputación provincial, independientemente de la provincia de Sevilla, habiendo de nombrar los diputados para las Cortes ordinarias que corresponden a su población.</p>
+		<p class="lorem"><b>Real Orden de las Cortes de 8 de mayo de 1820</b>: Se aprueba la Diputación Provincial de Santander, independientemente de la de Burgos.</p>
+		<p class="lorem"><b>Decreto XIV de las Cortes de 20 de agosto de 1820</b>: Que la ciudad de Málaga sea cabeza de su provincia, independientemente de la de Granada.</p>
+        </div>
+		
+		<div id="infoDiv2">
+        <h1>Las provincias de España en 1822</h1>
+        <p class="lorem"><b>Decreto LIX de las Cortes de 27 de enero de 1822:</b> Con el fin del cumplimiento del artículo 11 de la Constitución de 1812, las Cortes decretan, con calidad de provisinal, la división de su territorio en las provincias que a continuación se expresan.</p>
+		<ol><li>Alicante, su capital Alicante.</li>
+			<li>Almería, su capital Almería.</li>
+			<li>Avila, su capital Avila.</li>
+			<li>Badajoz, su capital Badajoz.</li>
+			<li>Baleares (islas), su capital Palma.</li>
+			<li>Barcelona, su capital Barcelona.</li>
+			<li>Bilbao, su capital Bilbao.</li>
+			<li>Burgos, su capital Burgos.</li>
+			<li>Cáceres, su capital Cáceres.</li>
+			<li>Cádiz, su capital Cádiz.</li>
+			<li>Calatayud, su capital Calatayud.</li>
+			<li>Canarias (islas), su capital Sta. Cruz de Tenerife.</li>
+			<li>Castellon, su capital Castellon de la Plana.</li>
+			<li>Ciudad-Real, su capital Ciudad-Real.</li>
+			<li>Chinchilla, su capital Chinchilla.</li>
+			<li>Córdoba, su capital Córdoba.</li>
+			<li>Coruña, su capital Coruña.</li>
+			<li>Cuenca, su capital Cuenca.</li>
+			<li>Gerona, su capital Gerona.</li>
+			<li>Granada, su capital Granada.</li>
+			<li>Guadalajara, su capital Guadalajara.</li>
+			<li>Huelva, su capital Huelva.</li>
+			<li>Huesca, su capital Huesca.</li>
+			<li>Jaen, su capital Jaen.</li>
+			<li>Játiva, su capital Játiva.</li>
+			<li>Leon, su capital Leon.</li>
+			<li>Lérida, su capital Lérida.</li>
+			<li>Logroño, su capital Logroño.</li>
+			<li>Lugo, su capital Lugo.</li>
+			<li>Madrid, su capital Madrid.</li>
+			<li>Málaga, su capital Málaga.</li>
+			<li>Murcia, su capital Murcia.</li>
+			<li>Orense, su capital Orense.</li>
+			<li>Oviedo, su capital Oviedo.</li>
+			<li>Palencia, su capital Palencia.</li>
+			<li>Pamplona, su capital Pamplona.</li>
+			<li>Salamanca, su capital Salamanca.</li>
+			<li>S.Sebastian, su capital S.Sebastian.</li>
+			<li>Santander, su capital Santander.</li>
+			<li>Segovia, su capital Segovia.</li>
+			<li>Sevilla, su capital Sevilla.</li>
+			<li>Soria, su capital Soria.</li>
+			<li>Tarragona, su capital Tarragona.</li>
+			<li>Teruel, su capital Teruel.</li>
+			<li>Toledo, su capital Toledo.</li>
+			<li>Valencia, su capital Valencia.</li>
+			<li>Valladolid, su capital Valladolid.</li>
+			<li>Vigo, su capital Vigo.</li>
+			<li>Villafranca, su capital Villafranca del Bierzo.</li>
+			<li>Vitoria, su capital Vitoria.</li>
+			<li>Zamora, su capital Zamora.</li>
+			<li>Zaragoza, su capital Zaragoza.</li>
+		</ol>
+        </div>
+		
+		<div id="infoDiv3">
+        <h1>Las provincias de América en 1821</h1>
+        <p class="lorem"><b>Artículo 10 de la Constitución de 1812:</b> El territorio español comprende en la América septentrional, Nueva España, con la Nueva Galicia y Península de Yucatán, Guatemala, provincias internas de Oriente, provincias internas de Occidente, isla de Cuba con las dos Floridas, la parte española de la isla de Santo Domingo, y la isla de Puerto Rico con las demás adyacentes a éstas y al continente en uno y otro mar. En la América meridional, la Nueva Granada, Venezuela, el Perú, Chile, provincias del Río de la Plata, y todas las islas adyacentes en el mar Pacífico y en el Atlántico.
+		<p class="lorem"><b>Decreto CLXII de las Cortes de 23 de mayo de 1812:</b> Se formará una junta preparatoria para facilitar la elección de los Diputados de Cortés para las ordinarias del año próximo de 1813 en las capitales siguientes: México, capital de Nueva España; Guadalajara, capital de la Nueva Galicia, Mérida, capital de Yucatán; Guatemala, capital de la provincia de este nombre; Monterrey, capital de la provincia del nuevo reino de León, una de las internas del Oriente; Durango, capital de la Nueva Vizcaya, una de las provincias internas de Occidente; Habana, capital de la Isla de Cuba y de las dos Floridas, Santo Domingo, capital de la isla de este nombre; Puerto Rico, capital de la isla de este nombre; Santa Fe de Bogotá, capital de la Nueva Granada; Caracas, capital de Venezuela; Lima, capital del Perú; Santiago, capital de Chile; Buenos Aires, capital de las provincias del Río de la Plata.
+		<p class="lorem"><b>Decreto CCXIV de las Cortes de 23 de mayo de 1812</b>: Habrá Diputaciones provinciales en Ultramar en en cada una de las provincias que expresamente se nombran en el artículo 10 de la Constitución, y además por ahora en la América Septentrional, en Nueva España la de San Luis Potosí, a que se agregue Guanajuato; en Guatemala otra que se fijará en León de Nicaragua con la provincia de Costa Rica, y en la Isla de Cuba otra en Santiago de Cuba. Y además por ahora en la América Meridional, en el Perú la del Cuzco, en Buenos Aires la de Charcas, y en la Nueva Granada la de Quito.</p>
+		<p class="lorem"><b>Decreto LXXVI de las Cortes de 6 de noviembre de 1820</b>: Las Cortes han decretado que la provincia de Zacatecas forme parte de la Diputación provincial de San Luis Potosí. Que se establezca una Diputación provincial en la ciudad de Valladolid de Mechoacan para la provincia de este nombre y la de Guanajuato.
+		<p class="lorem"><b>Decreto XIII de las Cortes de 8 de mayo de 1821</b>: Las Cortes han decretado que en fuerza del artículo 325 de la Constitución (en cada provincia habrá una diputación llamada provincial, para promover su prosperidad), y ampliando el artículo 1 del decreto de las Cortes generales y extraordinarias de 23 de Mayo de 1812, se establece una Diputación provincial en cada una de todas las Intendencias de provincia de la España ultramarina en que no esté ya establecida.
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en Nueva España</b>: 
+			<ol><li>México.</li>
+			<li>Puebla de los Ángeles.</li>
+			<li>Veracruz.</li>
+			<li>Mérida de Yucatán.</li>
+			<li>Antequera de Oajaca.</li>
+			<li>Valladolid de Mechoacan.</li>
+			<li>Santa Fé de Guanajuato.</li>
+			<li>San Luis de Potosí.</li>
+			<li>Guadalajara.</li>
+			<li>Zacatecas.</li>
+			<li>Durango.</li>
+			<li>Sonora.</li>
+			<li>Saltillo (Decreto CCXCVII de las Cortes de 5 de septiembre de 1813, se establece una Intendencia de provincia en 1813 cuyo territorio es el de las cuatro provincias de Coahuila, las Tejas, Nuevo Reino de Leon y Nuevo Santander).</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en las Antillas</b>: 
+			<ol><li>Santo Domingo.</li>
+			<li>Puerto Rico.</li>
+			<li>Santiago de Cuba.</li>
+			<li>La Habana.</li>
+			<li>Puerto Príncipe (establecida en la Orden de las Cortes de 27 de febrero de 1812).</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en el Reino de Guatemala</b>: 
+			<ol><li>Guatemala.</li>
+			<li>San Salvador.</li>
+			<li>Comayagua.</li>
+			<li>Nicaragua (Costa Rica era un corregimiento dependiente de Nicaragua).</li>
+			<li>Chiapa.</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en Venezuela</b>: 
+			<ol><li>Caracas.</li>
+			<li>Maracaybo.</li>
+			<li>Barinas.</li>
+			<li>Cumaná.</li>
+			<li>Guayana.</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en el Nuevo Reino de Granada</b>: 
+			<ol><li>Santa Fé de Bogotá.</li>
+			<li>Quito.</li>
+			<li>Popayan.</li>
+			<li>Cuenca.</li>
+			<li>Cartagena.</li>
+			<li>Panamá (creada de nuevo en el Decreto XXXIX de las Cortes de 19 de mayo de 1822).</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en Perú</b>: 
+			<ol><li>Lima.</li>
+			<li>Tarma.</li>
+			<li>Trujillo.</li>
+			<li>Cuzco.</li>
+			<li>Guamanga.</li>
+			<li>Huacanvelica.</li>
+			<li>Arequipa.</li>
+			<li>Puno.</li>
+			<li>Chiloé.</li>
+			<li>Guayaquil (no fue una intendencia pero fue tratada como una tal a raiz de la Real Orden de 1803 en el que se segregó a Guayaquil de Quito para incorporarla al Perú).</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en el Reino de Chile</b>: 
+			<ol><li>Santiago.</li>
+			<li>Concepción.</li>
+			</ol>
+		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en la Plata</b>: 
+			<ol><li>Buenos Aires.</li>
+			<li>Asunción del Paraguay.</li>
+			<li>Córdoba del Tucuman.</li>
+			<li>Salta.</li>
+			<li>Cochabamba.</li>
+			<li>La Paz.</li>
+			<li>La Plata (Chuquisaca).</li>
+			<li>Potosí.</li>
+			</ol>
+        </div>
+		
+		<div id="infoDiv4">
+        <h1>Las provincias de América en 1822</h1>
+        <p class="lorem"><b>Constitución de 1824 de los Estados Unidos Mexicanos:</b> Los estados fundadores fueron:
+			<ol><li>México.</li>
+			<li>Guanajuato.</li>
+			<li>Oaxaca.</li>
+			<li>Puebla.</li>
+			<li>Michoacán, con capital en Valladolid (Morelia).</li>
+			<li>San Luis Potosí.</li>
+			<li>Veracruz.</li>
+			<li>Yucatán, con capital en Mérida.</li>
+			<li>Jalisco, con capital en Guadalajara.</li>
+			<li>Zacatecas.</li>
+			<li>Querétaro.</li>
+			<li>Sonora y Sinaloa, con capital en El Fuerte.</li>
+			<li>Tabasco, con capital en Villahermosa.</li>
+			<li>Tamaulipas, con capital en Padilla.</li>
+			<li>Nuevo León, con capital en Monterrey.</li>
+			<li>Coahuila y Texas, con capital en Saltillo.</li>
+			<li>Durango.</li>
+			<li>Chihuahua.</li>
+			<li>Chiapas, con capital en Ciudad Real de Chiapas.</li>
+			<li>Territorio federal de Alta California.</li>
+			<li>Territorio Federal de Baja California.</li>
+			<li>Territorio Federal de Colima.</li>
+			<li>Territorio Federal de Nuevo México, con capital en Santa Fé.</li>
+			</ol>
+		<p class="lorem"><b>Constitución de 1824 de la República Federal de Centroamérica</b>: La Federación estaba formada por cinco estados:</p>
+			<ol><li>Guatemala.</li>
+			<li>El Salvador.</li>
+			<li>Honduras (capital Comayagua).</li>
+			<li>Nicaragua (capital León).</li>
+			<li>Costa Rica (capital Cartago).</li>
+		</ol>
+		<p class="lorem"><b>Ley de División Territorial de 1824 de la República de Colombia</b>: El país está dividido en los siguientes departamentos:</p>
+		<ol><li>Apure, con capital en Barinas.</li>
+			<li>Azuay, con capital en Cuenca.</li>
+			<li>Boyacá, con capital en Tunja.</li>
+			<li>Cauca, con capital en Popayán.</li>
+			<li>Cundinamarca, con capital en Bogotá.</li>
+			<li>Ecuador, con capital en Quito.</li>
+			<li>Guayaquil.</li>
+			<li>Istmo, con capital en Panamá.</li>
+			<li>Magdalena, con capital en Sana Marta.</li>
+			<li>Orinoco, con capital en Cumaná.</li>
+			<li>Venezuela, con capital en Caracas.</li>
+			<li>Zulia, con capital en Maracaibo.</li>
+			<li>Haití Español, con capital en Santo Domingo, se separó en 1822.</li>
+		</ol>
+		<p class="lorem"><b>Constitución de 1823 de Perú</b>: El Perú se divide en los siguientes departamentos:</p>
+		<ol><li>Lima.</li>
+			<li>La Libertad, con capital en Trujillo.</li>
+			<li>Junín, con capital en Tarma.</li>
+			<li>Maynas (Amazonas), con capital en Chachapoyas.</li>
+			<li>Cuzco.</li>
+			<li>Ayacucho.</li>
+			<li>Arequipa.</li>
+			<li>Puno.</li>
+		</ol>
+		<p class="lorem"><b>Ley Territorial de Bolivia de 1825</b>: El estado se divide en cinco departamentos:</p>
+			<ol><li>Chuquisaca.</li>
+			<li>Cochabamba.</li>
+			<li>La Paz.</li>
+			<li>Potosí.</li>
+			<li>Santa Cruz de la Sierra.</li>
+		</ol>
+		<p class="lorem"><b>Constitución de Chile de 1823</b>: El estado se divide en tres departamentos: 
+			<ol><li>Santiago.</li>
+			<li>Concepción.</li>
+			<li>Cochimbo (capital en La Serena).</li>
+			<li>Chiloé (incorporada en 1826).</li>
+		</ol>
+		<p class="lorem"><b>Congreso Nacional Constituyente de 1824 de Las Provincias del Río de la Plata</b>: Las provincias que asistieron al Congreso fueron:</p>
+		<ol><li>Buenos Aires.</li>
+			<li>Provincia Oriental (con capital en Montevideo).</li>
+			<li>Córdoba.</li>
+			<li>Salta.</li>
+			<li>Corrientes.</li>
+			<li>Entre Ríos (capital en Paraná).</li>
+			<li>La Rioja.</li>
+			<li>Mendoza.</li>
+			<li>San Juan.</li>
+			<li>San Luis.</li>
+			<li>Santiago del Estero.</li>
+			<li>Catamarca.</li>
+			<li>Tucumán (capital en San Miguel de Tucumán).</li>
+			<li>Paraguay se separó de las Provincias del Río de la Plata en el año 1810.</li>
+		</ol>
+        </div>
+		
+		<div id="infoDiv5">
+        <h1>El caso de las Islas Filipinas</h1>
+        <p class="lorem"><b>Artículo 10 de la Constitución de 1812:</b> El territorio español comprende en el Asia, las islas Filipinas, y las que dependen de su gobierno.
+		<p class="lorem"><b>Decretos CLXII y CLXIV de las Cortes de 23 de mayo de 1812:</b> Se formará una junta preparatoria para facilitar la elección de los Diputados de Cortés para las ordinarias del año próximo de 1813 en las capitales siguientes: Manila, capital de las Islas Filipinas. Habrá Diputación Provincial en Manila.
+		<p class="lorem"><b>Direcciones de la Junta Preparatoria para las Elecciones de la Diputacíon Provincial de Manila:</b> Se compondrá esta Diputación del Presidente, del Intendente cuando lo haya, y de siete individuos elegidos por los Electores de Partido, del siguiente modo: dos de ellos por la provincia de Manila; otros dos la provincia de Nueva Segovia; uno la Nueva Cáceres; y dos la de Zebú.
+		<p class="lorem"><b>De la División que se ha hecho del Reyno de Filipinas en provincias y Subdivisión de éstas en partidos para facilitar las elecciones de de Diputados</b>: Las cuatro provincias corresponden del siguiente modo.</p>
+		<ol><li>La provincia de Manila, cuya capital es la ciudad del mismo nombre, subvididido en la Plaza de Manila, el Gobierno de Cavite, los cuatro Corregimientos de Tondo, Zambales, Nueva Écija y Mindoro, y las cinco Alcaldías Mayores de Laguna de Bay, Batangas, Bulacán, Pampanga y Bataán.</li>
+		<li>La provincia de Nueva Segovia, cuya capital es la ciudad de Bigan, subdividido en las cuatro Alcaldías Mayores de Ylocos, Pangansian, Cagayán y Batanes.</li>
+		<li>La provincia de Nueva Cáceres, cuya capital es la ciudad de Naga, subdividido en las cuatro Alcaldías Mayores de Camarines, Albay, Tayabas y Samar.</li>
+		<li>La provincia de Zebú, cuya capital es la ciudad del mismo nombre, subdividido en las siete Alcaldías Mayores de Zebú, Calamianes, Yloylo, Antique, Cápiz, Leyte y Carag, los dos Gobiernos de Zamboanga y de Marianas, y los dos Corregimientos de Misamis e Isla de Negros.</li>
+		</ol>
+        </div>
+  
+  </div>
+  <div id="titleDiv" class="esri-widget">
+      <div id="titleText"><p><h2><b>La división provincial de España, América y Filipinas justo antes y después de la independencia.</b></h2>
+	  <p class="lorem">Más información en los cuadros ubicados abajo a la derecha.</div>
+  </div>
+</body>
+</html>

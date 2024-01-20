@@ -162,8 +162,39 @@
         title: "<b>{Distrito}</b>"
 		};
 		
-	  const template4 = {
-        title: "<b>{Provincia}</b>"
+          const template4 = {
+        title: "<b>{Provincia}</b>",
+		content: [
+            {
+              type: "fields",
+              fieldInfos: [
+                {
+                  fieldName: "Población",
+                  label: "Población en 1812"
+                },
+                {
+                  fieldName: "Diputados_Población",
+                  label: "Número de diputados por cantidad de habitantes"
+                },       
+				{
+                  fieldName: "Diputados_Región",
+                  label: "Número de diputados por región con voto en Cortes"
+                },                
+				{
+                  fieldName: "Diputados_Ciudades",
+                  label: "Número de diputados por cantidad de ciudades con voto en Cortes"
+                },                
+				{
+                  fieldName: "Diputados",
+                  label: "Número de diputados en total"
+                },                
+				{
+                  fieldName: "Suplentes",
+                  label: "Número de diputados suplentes"
+                }
+              ]
+            }
+          ]
 		};
 		
 	  const template5 = {
@@ -218,7 +249,7 @@
 	  map.add(provincias1821);
 	  
 	  const provincias1812 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/8",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/5",
 		title: "Provincias de España, América y Filipinas en 1812",
 		visible: false,
 		popupTemplate: template4

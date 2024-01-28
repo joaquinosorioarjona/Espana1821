@@ -151,7 +151,8 @@
 		};
 		
 		const template1 = {
-        title: "<b>{NAMEUNIT}</b>"
+        title: "<b>{NAMEUNIT}</b>",
+		content: "Provincia de {Area}{País}."
 		};
 		
 	  const template2 = {
@@ -162,7 +163,7 @@
         title: "<b>{Distrito}</b>"
 		};
 		
-          const template4 = {
+	  const template4 = {
         title: "<b>{Provincia}</b>",
 		content: [
             {
@@ -206,9 +207,24 @@
 		};
 		
 	  const template7 = {
-        title: "<b>{Catedral}</b>"
+        title: "<b>{Catedral}</b>",
+		content: "Sede de la Diocesis de {Diocesis}, fundada en {Año}."
 		};
 		
+	  const template8 = {
+        title: "<b>{Nombre}</b>",
+		content: "{Tipo}"
+		};
+		
+	  const template9 = {
+        title: "Real Audiencia de <b>{Nombre}</b>"
+		};
+		
+	  const template10 = {
+        title: "Diocesis de <b>{Nombre}</b>",
+		content: "<li>Sede en {Cabecera}.</li><li>Perteneciente a la Arquediocesis de {Diocesis}."
+		};
+			
 	  const distritos = new FeatureLayer({
 		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/17",
 		title: "Distritos universitarios",
@@ -218,23 +234,23 @@
 	  map.add(distritos);
 	  
 	  const diocesis = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/18",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/18",
 		title: "Diocesis eclesiásticas",
 		visible: false,
-		popupTemplate: template2
+		popupTemplate: template10
 	  });
 	  map.add(diocesis);
 	  
 	  const audiencias = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/19",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/19",
 		title: "Reales Audiencias",
 		visible: false,
-		popupTemplate: template2
+		popupTemplate: template9
 	  });
 	  map.add(audiencias);
 	  
 	  const provincias1824 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/9",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/9",
 		title: "Provincias de España, América y Filipinas en 1824",
 		visible: false,
 		popupTemplate: template1
@@ -242,14 +258,14 @@
 	  map.add(provincias1824);
 	  
 	  const provincias1821 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/8",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/8",
 		title: "Provincias de España, América y Filipinas en 1821",
 		popupTemplate: template1
 	  });
 	  map.add(provincias1821);
 	  
 	  const provincias1812 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/5",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/5",
 		title: "Provincias de España, América y Filipinas en 1812",
 		visible: false,
 		popupTemplate: template4
@@ -257,7 +273,7 @@
 	  map.add(provincias1812);
 	  
 	 const caminos = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/21",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/21",
 		title: "Reales Caminos",
 		visible: false,
 		popupTemplate: template2
@@ -265,21 +281,21 @@
 	 map.add(caminos);
 	 
 	 const mar = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/20",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/20",
 		title: "Rutas marítimas",
 		visible: false,
 	  });
 	 map.add(mar);
 	  
 	  const regiones = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/4",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/4",
 		title: "Regiones con voto en Cortes",
 		popupTemplate: template5
 	  });
 	 map.add(regiones);
 	  
 	  const puertos = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/13",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/13",
 		title: "Puertos de libre comercio",
 		visible: false,
 		popupTemplate: template6
@@ -287,23 +303,31 @@
 	 map.add(puertos);
 	 
 	  const catedrales = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Catedrales/FeatureServer",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/17",
 		title: "Catedrales",
 		visible: false,
 		popupTemplate: template7
 	  });
 	 map.add(catedrales);
 	 
+	  const juzgados = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/24",
+		title: "Sedes judiciales",
+		visible: false,
+		popupTemplate: template0
+	  });
+	 map.add(juzgados);
+	 
 	 const universidades = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Universidades1821/FeatureServer",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/16",
 		title: "Universidades programadas según el Plan de 1821",
 		visible: false,
-		popupTemplate: template2
+		popupTemplate: template8
 	  });
 	 map.add(universidades);
 	 
 	 const america = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/1",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/1",
 		title: "Ciudades de América y Filipinas con voto en Cortes",
 		visible: false,
 		popupTemplate: template0
@@ -311,7 +335,7 @@
 	 map.add(america);
 	 
 	 const espana = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/2",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/2",
 		title: "Ciudades de España con voto en Cortes",
 		visible: false,
 		popupTemplate: template0
@@ -319,7 +343,7 @@
 	 map.add(espana);
 	 
 	 const capitales = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Capitales_provincia/FeatureServer",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/0",
 		title: "Capitales de provincia en 1812",
 		popupTemplate: template0
 	  });

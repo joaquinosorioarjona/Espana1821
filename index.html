@@ -224,6 +224,15 @@
         title: "Diocesis de <b>{Nombre}</b>",
 		content: "<li>Sede en {Cabecera}.</li><li>Perteneciente a la Arquediocesis de {Diocesis}."
 		};
+		
+	  const template11 = {
+        title: "<b>{Nombre}</b>",
+		content: "<li>Ubicado en {Ciudad}.</li><li>Su aspecto actual data de {Año}."
+		};
+		
+	  const template12 = {
+        title: "Capitanía Militar de <b>{Nombre}</b>"
+		};
 			
 	  const distritos = new FeatureLayer({
 		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/17",
@@ -248,6 +257,14 @@
 		popupTemplate: template9
 	  });
 	  map.add(audiencias);
+	  
+	  const capitanias = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/27",
+		title: "Capitanías Militares",
+		visible: false,
+		popupTemplate: template12
+	  });
+	  map.add(capitanias);
 	  
 	  const provincias1824 = new FeatureLayer({
 		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/9",
@@ -310,6 +327,14 @@
 	  });
 	 map.add(catedrales);
 	 
+	 const palacios = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/29",
+		title: "Palacios reales",
+		visible: false,
+		popupTemplate: template11
+	  });
+	 map.add(palacios);
+	 
 	  const juzgados = new FeatureLayer({
 		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/24",
 		title: "Sedes judiciales",
@@ -317,6 +342,14 @@
 		popupTemplate: template0
 	  });
 	 map.add(juzgados);
+	 
+	 const militar = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/28",
+		title: "Sedes militares",
+		visible: false,
+		popupTemplate: template0
+	  });
+	 map.add(militar);
 	 
 	 const universidades = new FeatureLayer({
 		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/16",
@@ -448,6 +481,7 @@
 	});
   </script>
 </head>
+
 <body>
   <div id="viewDiv">
   

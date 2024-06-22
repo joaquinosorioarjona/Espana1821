@@ -224,18 +224,13 @@
         title: "Diocesis de <b>{Nombre}</b>",
 		content: "<li>Sede en {Cabecera}.</li><li>Perteneciente a la Arquediocesis de {Diocesis}."
 		};
-		
+	    
 	  const template11 = {
-        title: "<b>{Nombre}</b>",
-		content: "<li>Ubicado en {Ciudad}.</li><li>Su aspecto actual data de {Año}."
-		};
-		
-	  const template12 = {
         title: "Capitanía Militar de <b>{Nombre}</b>"
 		};
 			
 	  const distritos = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana1821_WFL1/FeatureServer/17",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España1821_WFL1/FeatureServer/17",
 		title: "Distritos universitarios",
 		visible: false,
 		popupTemplate: template3
@@ -243,7 +238,7 @@
 	  map.add(distritos);
 	  
 	  const diocesis = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/18",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/18",
 		title: "Diocesis eclesiásticas",
 		visible: false,
 		popupTemplate: template10
@@ -251,7 +246,7 @@
 	  map.add(diocesis);
 	  
 	  const audiencias = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/19",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/19",
 		title: "Reales Audiencias",
 		visible: false,
 		popupTemplate: template9
@@ -259,15 +254,15 @@
 	  map.add(audiencias);
 	  
 	  const capitanias = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/27",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/27",
 		title: "Capitanías Militares",
 		visible: false,
-		popupTemplate: template12
+		popupTemplate: template11
 	  });
 	  map.add(capitanias);
 	  
 	  const provincias1824 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/9",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/9",
 		title: "Provincias de España, América y Filipinas en 1824",
 		visible: false,
 		popupTemplate: template1
@@ -275,14 +270,14 @@
 	  map.add(provincias1824);
 	  
 	  const provincias1821 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/8",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/8",
 		title: "Provincias de España, América y Filipinas en 1821",
 		popupTemplate: template1
 	  });
 	  map.add(provincias1821);
 	  
 	  const provincias1812 = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/5",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/5",
 		title: "Provincias de España, América y Filipinas en 1812",
 		visible: false,
 		popupTemplate: template4
@@ -290,7 +285,7 @@
 	  map.add(provincias1812);
 	  
 	 const caminos = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/21",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/21",
 		title: "Reales Caminos",
 		visible: false,
 		popupTemplate: template2
@@ -298,21 +293,21 @@
 	 map.add(caminos);
 	 
 	 const mar = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/20",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/20",
 		title: "Rutas marítimas",
 		visible: false,
 	  });
 	 map.add(mar);
 	  
 	  const regiones = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/4",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/4",
 		title: "Regiones con voto en Cortes",
 		popupTemplate: template5
 	  });
 	 map.add(regiones);
 	  
 	  const puertos = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/13",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/13",
 		title: "Puertos de libre comercio",
 		visible: false,
 		popupTemplate: template6
@@ -320,23 +315,15 @@
 	 map.add(puertos);
 	 
 	  const catedrales = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/17",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/17",
 		title: "Catedrales",
 		visible: false,
 		popupTemplate: template7
 	  });
 	 map.add(catedrales);
-	 
-	 const palacios = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/29",
-		title: "Palacios reales",
-		visible: false,
-		popupTemplate: template11
-	  });
-	 map.add(palacios);
-	 
+	    
 	  const juzgados = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/24",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/24",
 		title: "Sedes judiciales",
 		visible: false,
 		popupTemplate: template0
@@ -344,7 +331,7 @@
 	 map.add(juzgados);
 	 
 	 const militar = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/28",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/28",
 		title: "Sedes militares",
 		visible: false,
 		popupTemplate: template0
@@ -352,7 +339,7 @@
 	 map.add(militar);
 	 
 	 const universidades = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/16",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/16",
 		title: "Universidades programadas según el Plan de 1821",
 		visible: false,
 		popupTemplate: template8
@@ -360,7 +347,7 @@
 	 map.add(universidades);
 	 
 	 const america = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/1",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/1",
 		title: "Ciudades de América y Filipinas con voto en Cortes",
 		visible: false,
 		popupTemplate: template0
@@ -368,7 +355,7 @@
 	 map.add(america);
 	 
 	 const espana = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/2",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/2",
 		title: "Ciudades de España con voto en Cortes",
 		visible: false,
 		popupTemplate: template0
@@ -376,11 +363,19 @@
 	 map.add(espana);
 	 
 	 const capitales = new FeatureLayer({
-		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Espana_1821_WFL1/FeatureServer/0",
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/0",
 		title: "Capitales de provincia en 1812",
 		popupTemplate: template0
 	  });
 	 map.add(capitales);
+
+	const capitales2 = new FeatureLayer({
+		url: "https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/España_1821_WFL1/FeatureServer/30",
+		title: "Palacios reales",
+		visible: false,
+		popupTemplate: template0
+	  });
+	 map.add(capitales2);
 	
 	  const compass = new Compass({
         view: view
@@ -611,8 +606,8 @@
 		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en las Antillas</b>: 
 			<ol><li>Santo Domingo.</li>
 			<li>Puerto Rico.</li>
-			<li>Santiago de Cuba.</li>
 			<li>La Habana.</li>
+			<li>Santiago de Cuba.</li> (establecida en la Orden de las Cortes de 27 de febrero de 1812)
 			<li>Puerto Príncipe (establecida en la Orden de las Cortes de 27 de febrero de 1812).</li>
 			</ol>
 		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en el Reino de Guatemala</b>: 
@@ -638,7 +633,7 @@
 			<li>Panamá (creada de nuevo en el Decreto XXXIX de las Cortes de 19 de mayo de 1822).</li>
 			</ol>
 		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en Perú</b>: 
-			<ol><li>Lima.</li>
+			<ol><li>Lima (incluía el Corregimiento de Guayaquil).</li>
 			<li>Tarma.</li>
 			<li>Trujillo.</li>
 			<li>Cuzco.</li>
@@ -647,7 +642,6 @@
 			<li>Arequipa.</li>
 			<li>Puno.</li>
 			<li>Chiloé.</li>
-			<li>Guayaquil (no fue una intendencia pero fue tratada como una tal a raiz de la Real Orden de 1803 en el que se segregó a Guayaquil de Quito para incorporarla al Perú).</li>
 			</ol>
 		<p class="lorem"><b>Intendencias según la Ordenanza General de Intendentes de Indias de 1803 en el Reino de Chile</b>: 
 			<ol><li>Santiago.</li>
@@ -687,10 +681,11 @@
 			<li>Durango.</li>
 			<li>Chihuahua.</li>
 			<li>Chiapas, con capital en Ciudad Real de Chiapas.</li>
+			<li>Territorio Federal de Colima.</li>
+			<li>Territorio Federal de Tlaxcala.</li>
 			<li>Territorio federal de Alta California.</li>
 			<li>Territorio Federal de Baja California.</li>
-			<li>Territorio Federal de Colima.</li>
-			<li>Territorio Federal de Nuevo México, con capital en Santa Fé.</li>
+			<li>Territorio Federal de Nuevo México, con capital en Santa Fe.</li>
 			</ol>
 		<p class="lorem"><b>Constitución de 1824 de la República Federal de Centroamérica</b>: La Federación estaba formada por cinco estados:</p>
 			<ol><li>Guatemala.</li>
@@ -708,7 +703,7 @@
 			<li>Ecuador, con capital en Quito.</li>
 			<li>Guayaquil.</li>
 			<li>Istmo, con capital en Panamá.</li>
-			<li>Magdalena, con capital en Sana Marta.</li>
+			<li>Magdalena, con capital en Santa Marta.</li>
 			<li>Orinoco, con capital en Cumaná.</li>
 			<li>Venezuela, con capital en Caracas.</li>
 			<li>Zulia, con capital en Maracaibo.</li>

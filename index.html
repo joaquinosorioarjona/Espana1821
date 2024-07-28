@@ -17,32 +17,77 @@
       text-align: center;
     }
 	#queryDiv {
-	background-color: dimgray;
+		background-color: dimgray;
         color: white;
         padding: 10px;
-	height: 50px
-        width: 100%;
-	max-width: 200px;
+		height: 50px
+        width: 200px;
      }
-	 #infoDiv {
-        width: 90%;
-        height: 300px;
+	 #infoDiv1 {
+        width: 500px;
+        height: 500px;
         background-color: white;
-	padding: 10px;
-	overflow-y: scroll;
-	margin: 10px auto;
+		padding: 10px;
+		overflow-y: scroll;
         }
-     #infoDiv h1 {
+     #infoDiv1 h1 {
         font-size: 16px;
         }
-     #infoDiv p {
+     #infoDiv1 p {
         font-style: italic;
         }
-     @media (min-width: 768px) {
-      .infoDiv {
-        width: 500px; 
-        height: 500px; 
-      }
+	 #infoDiv2 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv2 h1 {
+        font-size: 16px;
+        }
+     #infoDiv2 p {
+        font-style: italic;
+        }
+	 #infoDiv3 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv3 h1 {
+        font-size: 16px;
+        }
+     #infoDiv3 p {
+        font-style: italic;
+        }
+	 #infoDiv4 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv4 h1 {
+        font-size: 16px;
+        }
+     #infoDiv4 p {
+        font-style: italic;
+        }
+	 #infoDiv5 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+		padding: 10px;
+		overflow-y: scroll;
+        }
+     #infoDiv5 h1 {
+        font-size: 16px;
+        }
+     #infoDiv5 p {
+        font-style: italic;
+        }
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.24/"></script>
@@ -52,19 +97,19 @@
     require([
 	  "esri/config",
 	  "esri/Map",
-     	  "esri/views/MapView",
+      "esri/views/MapView",
 	  "esri/layers/FeatureLayer",
 	  "esri/layers/GraphicsLayer",
 	  "esri/rest/query",
 	  "esri/rest/support/Query",
-          "esri/widgets/BasemapGallery",
-          "esri/widgets/ScaleBar",
+      "esri/widgets/BasemapGallery",
+      "esri/widgets/ScaleBar",
 	  "esri/widgets/Compass",
 	  "esri/widgets/Search",
 	  "esri/widgets/Locate",
 	  "esri/widgets/Home",
 	  "esri/widgets/Print",
-          "esri/widgets/Legend",
+      "esri/widgets/Legend",
 	  "esri/widgets/LayerList",
 	  "esri/widgets/Expand",
 	  "esri/widgets/Popup"
